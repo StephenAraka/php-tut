@@ -13,11 +13,29 @@
 
 // POST METHOD - {secure}
 if (isset($_POST['submit'])) {
-    echo htmlspecialchars($_POST['email']);
-    echo htmlspecialchars($_POST['title']);
-    echo htmlspecialchars($_POST['ingredients']);
-}
 
+  // VALIDATION
+  // check email
+  if (empty($_POST['email'])) {
+    echo 'An email is required <br />';
+  } else {
+    echo htmlspecialchars($_POST['email']);
+  }
+
+  // check title
+  if (empty($_POST['title'])) {
+    echo 'A title is required <br />';
+  } else {
+    echo htmlspecialchars($_POST['title']);
+  }
+
+  // check for ingredients
+  if (empty($_POST['ingredients'])) {
+    echo 'At least one ingredient is required <br />';
+  } else {
+    echo htmlspecialchars($_POST['ingredients']);
+  }
+} // End of POST check
 ?>
 
 <!DOCTYPE html>
@@ -26,18 +44,18 @@ if (isset($_POST['submit'])) {
 <?php include('templates/header.php'); ?>
 
 <section class="container grey-text">
-    <h4 class="center">Add a Pizza</h4>
-    <form class="white" action="add.php" method="POST">
-        <label>Your Email:</label>
-        <input type="email" name="email" required>
-        <label>Pizza Title:</label>
-        <input type="text" name="title" required>
-        <label>Ingredients (comma separated):</label>
-        <input type="text" name="ingredients" required>
-        <div class="center">
-            <input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
-        </div>
-    </form>
+  <h4 class="center">Add a Pizza</h4>
+  <form class="white" action="add.php" method="POST">
+    <label>Your Email:</label>
+    <input type="email" name="email" required>
+    <label>Pizza Title:</label>
+    <input type="text" name="title" required>
+    <label>Ingredients (comma separated):</label>
+    <input type="text" name="ingredients" required>
+    <div class="center">
+      <input type="submit" name="submit" value="submit" class="btn brand z-depth-0">
+    </div>
+  </form>
 </section>
 
 <?php include('templates/footer.php'); ?>
