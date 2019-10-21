@@ -1,11 +1,6 @@
 <?php
-// connect to db: use MySQLi or PDO
-$conn = mysqli_connect('localhost', 'steve', 'test1234', 'ninja_pizza');
 
-// check connection
-if (!$conn) {
-  echo 'aya bass! connection error: ' . mysqli_connect_error();
-}
+include('config/db_connect.php');
 
 // write query to get all pizzas
 $sql = 'SELECT title, ingredients, id from pizzas ORDER BY created_at';
@@ -43,7 +38,7 @@ mysqli_close($conn);
 
             <ul>
 
-              <?php foreach (explode(',', $pizza['ingredients']) as $ingredient): ?>
+              <?php foreach (explode(',', $pizza['ingredients']) as $ingredient) : ?>
                 <li><?php echo htmlspecialchars($ingredient) ?></li>
               <?php endforeach; ?>
 
@@ -51,7 +46,7 @@ mysqli_close($conn);
 
           </div>
           <div class="card-action right-align">
-            <a href="#" class="brand-text">more info</a>
+            <a href="details.php?id=<?php echo $pizza['id'] ?>" class="brand-text">more info</a>
           </div>
         </div>
       </div>
