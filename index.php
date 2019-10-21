@@ -54,11 +54,6 @@ mysqli_close($conn);
     <?php endforeach; ?>
 
   </div>
-  <?php if (count($pizzas) >= 3) : ?>
-    <p> there are 3 or more pizzas </p>
-  <?php else : ?>
-    <p> there are not more than 3 pizzas </p>
-  <?php endif; ?>
 </div>
 
 <?php include('templates/footer.php'); ?>
