@@ -34,7 +34,7 @@ mysqli_close($conn);
 <div class="container">
   <div class="row">
 
-    <?php foreach ($pizzas as $pizza) { ?>
+    <?php foreach ($pizzas as $pizza) : ?>
 
       <div class="col s6 m3">
         <div class="card z-depth-0">
@@ -43,9 +43,9 @@ mysqli_close($conn);
 
             <ul>
 
-              <?php foreach (explode(',', $pizza['ingredients']) as $ingredient) { ?>
+              <?php foreach (explode(',', $pizza['ingredients']) as $ingredient): ?>
                 <li><?php echo htmlspecialchars($ingredient) ?></li>
-              <?php } ?>
+              <?php endforeach; ?>
 
             </ul>
 
@@ -56,8 +56,14 @@ mysqli_close($conn);
         </div>
       </div>
 
-    <?php } ?>
+    <?php endforeach; ?>
+
   </div>
+  <?php if (count($pizzas) >= 3) : ?>
+    <p> there are 3 or more pizzas </p>
+  <?php else : ?>
+    <p> there are not more than 3 pizzas </p>
+  <?php endif; ?>
 </div>
 
 <?php include('templates/footer.php'); ?>
