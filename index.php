@@ -21,6 +21,7 @@ $pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC); // MYSQLI_ASSOC returns assoc
 mysqli_free_result($result);
 mysqli_close($conn);
 
+
 ?>
 
 <!DOCTYPE html>
@@ -39,14 +40,22 @@ mysqli_close($conn);
         <div class="card z-depth-0">
           <div class="card-content center">
             <h6><?php echo htmlspecialchars($pizza['title']); ?></h6>
-            <div><?php echo htmlspecialchars($pizza['ingredients']); ?></div>
+
+            <ul>
+
+              <?php foreach (explode(',', $pizza['ingredients']) as $ingredient) { ?>
+                <li><?php echo htmlspecialchars($ingredient) ?></li>
+              <?php } ?>
+
+            </ul>
+
           </div>
           <div class="card-action right-align">
             <a href="#" class="brand-text">more info</a>
           </div>
         </div>
       </div>
-      
+
     <?php } ?>
   </div>
 </div>
