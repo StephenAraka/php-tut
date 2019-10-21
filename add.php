@@ -48,6 +48,15 @@ if (isset($_POST['submit'])) {
       $errors['ingredients'] = 'Ingredients should be comma separated list';
     }
   }
+
+  // check if errors array has stuff
+  if(array_filter($errors)){
+    // if there's errors
+    // echo 'errors in form';
+  } else {
+     header('Location: index.php');
+  }
+
 } // End of POST check
 ?>
 
