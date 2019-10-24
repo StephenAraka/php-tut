@@ -1,17 +1,19 @@
 <?php
+// ***COOKIES***
 
-// Sessions
-// since variables are only stored in files,
-// we can use Session Variables to store variables throughout a session
-// Stores variables across different pages
+// While session variables are stored on the server,
+// Cookies store data on your computer
+
 
 if(isset($_POST['submit'])){
-  session_start(); // starts the session
+  session_start();
 
   $_SESSION['name'] = $_POST['name'];
-
   echo $_SESSION['name'];
-
+  
+  // cookie for gender
+  setcookie('gender', $_POST['gender'], time() + 86400);
+  
   header('Location: index.php');
 }
 
@@ -29,6 +31,10 @@ if(isset($_POST['submit'])){
 <body>
   <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
     <input type="" name="name">
+    <select name="gender">
+      <option value="male">male</option>
+      <option value="female">female</option>
+    </select>
     <input type="submit" name="submit" value="submit">
   </form>
 </body>

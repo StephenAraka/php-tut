@@ -6,11 +6,10 @@ if ($_SERVER['QUERY_STRING'] == 'noname'){
   unset($_SESSION['name']);
 }
 
-$name = $_SESSION['name'] ?? 'Guest'; // this is called null coalescing, Guest is backup option
+$name = $_SESSION['name'] ?? 'Guest';
 
-// DELETING session variables
-// 1. Single session variable: unset($_SESSION['var_name']);
-// 2. All session variables: session_unset();
+// get cookie
+$gender = $_COOKIE['gender'] ?? 'Unknown'; 
 
 ?>
 
@@ -30,6 +29,7 @@ $name = $_SESSION['name'] ?? 'Guest'; // this is called null coalescing, Guest i
       <a href="index.php" class="brand-logo brand-text">Ninja Pizza</a>
       <ul id="nav-mobile" class="right hide-on-small-and-down">
         <li class="grey-text">Hello <?php echo htmlspecialchars($name); ?></li>
+        <li class="grey-text">(<?php echo htmlspecialchars($gender); ?>)</li>
         <li><a href="add.php" class="btn brand"> Add a Pizza </a></li>
       </ul>
     </div>
