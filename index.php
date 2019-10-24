@@ -1,11 +1,6 @@
 <?php
-// connect to db: use MySQLi or PDO
-$conn = mysqli_connect('localhost', 'steve', 'test1234', 'ninja_pizza');
 
-// check connection
-if (!$conn) {
-  echo 'aya bass! connection error: ' . mysqli_connect_error();
-}
+include('config/db_connect.php');
 
 // write query to get all pizzas
 $sql = 'SELECT title, ingredients, id from pizzas ORDER BY created_at';
@@ -21,6 +16,7 @@ $pizzas = mysqli_fetch_all($result, MYSQLI_ASSOC); // MYSQLI_ASSOC returns assoc
 mysqli_free_result($result);
 mysqli_close($conn);
 
+
 ?>
 
 <!DOCTYPE html>
@@ -33,21 +29,30 @@ mysqli_close($conn);
 <div class="container">
   <div class="row">
 
-    <?php foreach ($pizzas as $pizza) { ?>
+    <?php foreach ($pizzas as $pizza) : ?>
 
       <div class="col s6 m3">
         <div class="card z-depth-0">
           <div class="card-content center">
             <h6><?php echo htmlspecialchars($pizza['title']); ?></h6>
-            <div><?php echo htmlspecialchars($pizza['ingredients']); ?></div>
+
+            <ul>
+
+              <?php foreach (explode(',', $pizza['ingredients']) as $ingredient) : ?>
+                <li><?php echo htmlspecialchars($ingredient) ?></li>
+              <?php endforeach; ?>
+
+            </ul>
+
           </div>
           <div class="card-action right-align">
-            <a href="#" class="brand-text">more info</a>
+            <a href="details.php?id=<?php echo $pizza['id'] ?>" class="brand-text">more info</a>
           </div>
         </div>
       </div>
-      
-    <?php } ?>
+
+    <?php endforeach; ?>
+
   </div>
 </div>
 
