@@ -1,13 +1,20 @@
 <?php
 
-// Superglobals
-// special array variables that are pre-populated with values before your code runs
-// e.g $_GET[] && $_POST[]
+// Sessions
+// since variables are only stored in files,
+// we can use Session Variables to store variables throughout a session
+// Stores variables across different pages
 
-echo $_SERVER['SERVER_NAME'] . '<br />'; // server name
-echo $_SERVER['REQUEST_METHOD'] . '<br />'; // request method for this page
-echo $_SERVER['SCRIPT_FILENAME'] . '<br />'; // path of file from PC
-echo $_SERVER['PHP_SELF'] . '<br />'; // path relative to localhost = useful on form actions
+if(isset($_POST['submit'])){
+  session_start(); // starts the session
+
+  $_SESSION['name'] = $_POST['name'];
+
+  echo $_SESSION['name'];
+
+  header('Location: index.php');
+}
+
 
 ?>
 
@@ -20,6 +27,9 @@ echo $_SERVER['PHP_SELF'] . '<br />'; // path relative to localhost = useful on 
   <title>PHP TUT</title>
 </head>
 <body>
-  
+  <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
+    <input type="" name="name">
+    <input type="submit" name="submit" value="submit">
+  </form>
 </body>
 </html>
