@@ -1,13 +1,21 @@
 .brand {
-    background: #cbb09c !important;
+  background: #cbb09c !important;
 }
 
 .brand-text {
-    color: #cbb09c !important;
+  color: #cbb09c !important;
 }
 
 form {
-    max-width: 460px;
-    margin: 20px auto;
-    padding: 20px;
+  max-width: 460px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.pizza {
+  width: 10px;
+  margin: 40px auto -30;
+  display: block;
+  top: -30px;
+  position: relative;
 }

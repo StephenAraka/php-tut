@@ -1,0 +1,7 @@
+
+**.**COOKIES**.**
+
+How they work.
+Website requests to store data on client's computer.
+If allowed, this data will is used in such a way that the next time user visits site,
+The website will easily detect cookie and show related content. e.g. online shopping sites.
